@@ -38,7 +38,7 @@ function DashboardLayout() {
       <motion.aside
         initial={false}
         animate={{ 
-          width: isSidebarOpen ? '256px' : '80px',
+          width: isSidebarOpen ? '300px' : '0px',
           x: isSidebarOpen ? 0 : -200
         }}
         className={`fixed lg:relative bg-blue-900 text-white h-full z-30 transition-all duration-300 ${
