@@ -17,10 +17,10 @@ function App() {
       
       {/* Dashboard and Crime Records */}
       <Route path="/add-options" element={<AddOptions />} />
-      <Route path="/loc" element={<TestMap /> } />
       
       {/* Crime Records with Dashboard Layout */}
       <Route element={<DashboardLayout />}>
+      <Route path="/loc" element={<TestMap /> } />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/map" element={<FullMap />} />
         <Route path="/crimes" element={<CrimeRecordsList />} />
