@@ -51,7 +51,7 @@ function LandingPage() {
               className="flex items-center space-x-2"
             >
               <Shield className="text-blue-900" size={32} />
-              <span className="text-2xl font-bold text-blue-900">City Police</span>
+              <span className="text-2xl font-bold text-blue-900">AP Police</span>
             </motion.div>
             <div className="hidden md:flex space-x-8">
               <a href="#home" className="text-gray-700 hover:text-blue-900">Home</a>
@@ -74,7 +74,7 @@ function LandingPage() {
           className="h-full"
         >
           <SwiperSlide>
-            <div className="h-full bg-cover bg-center" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1542466500-dccb2789cbbb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")' }}>
+            <div className="h-full bg-cover bg-center" style={{ backgroundImage: 'url("https://pbs.twimg.com/media/Ew7dLn4VgAA3cVd.jpg")' }}>
               <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center">
                 <div className="container mx-auto px-4">
                   <motion.h1 
@@ -97,7 +97,7 @@ function LandingPage() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="h-full bg-cover bg-center" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")' }}>
+            <div className="h-full bg-cover bg-center" style={{ backgroundImage: 'url("https://education.sakshi.com/sites/default/files/images/2022/11/28/ap-police-1669654014.jpg")' }}>
               <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center">
                 <div className="container mx-auto px-4">
                   <h1 className="text-5xl font-bold text-white mb-4">Community First Policing</h1>
@@ -213,7 +213,7 @@ function LandingPage() {
                 </div>
                 <div className="flex items-center mb-4">
                   <Mail className="text-blue-900 w-6 h-6 mr-2" />
-                  <span className="text-gray-700">info@citypolice.gov</span>
+                  <span className="text-gray-700">info@appolice.gov</span>
                 </div>
                 <div className="flex items-center">
                   <MapPin className="text-blue-900 w-6 h-6 mr-2" />
@@ -253,7 +253,7 @@ function LandingPage() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Shield size={24} />
-                <span className="text-xl font-bold">City Police</span>
+                <span className="text-xl font-bold">AP Police</span>
               </div>
               <p className="text-blue-200">
                 Dedicated to serving and protecting our community 24/7.
@@ -278,9 +278,9 @@ function LandingPage() {
             </div>
           </div>
           <div className="border-t border-blue-800 mt-8 pt-8 text-center">
-            <p className="text-blue-200">&copy; 2024 City Police Department. All rights reserved.</p>
+            <p className="text-blue-200">&copy; 2024 AP Police Department. All rights reserved.</p>
           </div>
-        </div>
+        </div>  
       </footer>
     </div>
   );

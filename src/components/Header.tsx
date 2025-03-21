@@ -22,7 +22,7 @@ export default function Header() {
           <div className="flex items-center">
             <Link to="/" className="flex items-center text-blue-900 hover:text-blue-700">
               <Shield className="h-8 w-8" />
-              <span className="ml-2 text-lg font-semibold">City Police</span>
+              <span className="ml-2 text-lg font-semibold">AP Police</span>
             </Link>
             <div className="hidden sm:flex items-center ml-6">
               <Link to="/dashboard" className="text-gray-500 hover:text-gray-700">Dashboard</Link>
