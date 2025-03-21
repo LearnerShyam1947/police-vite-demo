@@ -20,7 +20,7 @@ function App() {
       
       {/* Crime Records with Dashboard Layout */}
       <Route element={<DashboardLayout />}>
-      <Route path="/loc" element={<TestMap /> } />
+        <Route path="/loc" element={<TestMap /> } />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/map" element={<FullMap />} />
         <Route path="/crimes" element={<CrimeRecordsList />} />
