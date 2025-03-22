@@ -216,7 +216,7 @@ import { motion } from 'framer-motion';
 import L from 'leaflet';
 import { AlertCircle, MapPin, Skull } from 'lucide-react';
 import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useOutletContext, useSearchParams } from 'react-router-dom';
 import police from './../assets/police.png';
 
 import pirate from './../assets/pirates.png';
@@ -346,6 +346,15 @@ const FullMap = () => {
     });
   });
 
+  const { setSelectedStation } = useOutletContext<{
+    setSelectedStation: (station: { name: string; crimes: any[] } | null) => void;
+  }>();
+
+  const handleStationClick = (station: { name: string; crimes: any[] }) => {
+    console.log(`${station.name} has ${station.crimes.length} reported crimes`);
+    setSelectedStation(station);
+  };
+
   return (
     <>
       <MapContainer
@@ -360,7 +369,14 @@ const FullMap = () => {
         />
         <SetMapBounds />
         {filteredData.map((station) => (
-          <Marker key={station.name} position={[station.lat, station.long]} icon={stationIcon}>
+          <Marker 
+            key={station.name} 
+            position={[station.lat, station.long]} 
+            icon={stationIcon}
+            eventHandlers={{
+              click: () => handleStationClick(station),
+            }}
+          >
             <Popup>
               <strong>{station.name}</strong>
               <p>{station.description}</p>
@@ -385,49 +401,50 @@ const FullMap = () => {
 
       {/* Stats Cards Below Map */}
 
+      <h1 className="text-3xl font-bold mt-3">Crime Status</h1>
 
-<div className="mt-6 flex space-x-6 justify-between">
-  <motion.div
-    key={"total-stations"}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    className="bg-white rounded-xl shadow-sm p-6 w-full md:w-1/3"
-  >
-    <div className="flex items-center">
-      <MapPin className="text-blue-600" size={24} />
-      <h3 className="text-xl font-semibold ml-2">Total Stations</h3>
-    </div>
-    <p className="text-gray-600">{totalStations}</p>
-  </motion.div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-2">
+        <motion.div
+          key={"total-stations"}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white rounded-xl shadow-sm p-6 w-full"
+        >
+          <div className="flex items-center">
+            <MapPin className="text-blue-600" size={24} />
+            <h3 className="text-xl font-semibold ml-2">Total Stations</h3>
+          </div>
+          <p className="text-gray-600">{totalStations}</p>
+        </motion.div>
 
-  <motion.div
-    key={"total-crimes"}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    className="bg-white rounded-xl shadow-sm p-6 w-full md:w-1/3"
-  >
-    <div className="flex items-center">
-      <AlertCircle className="text-red-600" size={24} />
-      <h3 className="text-xl font-semibold ml-2">Total Crimes</h3>
-    </div>
-    <p className="text-gray-600">{totalCrimes}</p>
-  </motion.div>
+        <motion.div
+          key={"total-crimes"}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white rounded-xl shadow-sm p-6 w-full"
+        >
+          <div className="flex items-center">
+            <AlertCircle className="text-red-600" size={24} />
+            <h3 className="text-xl font-semibold ml-2">Total Crimes</h3>
+          </div>
+          <p className="text-gray-600">{totalCrimes}</p>
+        </motion.div>
 
-  <motion.div
-    key={"crime-types"}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    className="bg-white rounded-xl shadow-sm p-6 w-full md:w-1/3"
-  >
-    <div className="flex items-center">
-      <Skull className="text-yellow-600" size={24} />
-      <h3 className="text-xl font-semibold ml-2">Crime Types</h3>
-    </div>
-    <p className="text-gray-600">Assault: {crimeTypes.assault}</p>
-    <p className="text-gray-600">Theft: {crimeTypes.theft}</p>
-    <p className="text-gray-600">Robbery: {crimeTypes.robbery}</p>
-  </motion.div>
-</div>
+        <motion.div
+          key={"crime-types"}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white rounded-xl shadow-sm p-6 w-full"
+        >
+          <div className="flex items-center">
+            <Skull className="text-yellow-600" size={24} />
+            <h3 className="text-xl font-semibold ml-2">Crime Types</h3>
+          </div>
+          <p className="text-gray-600">Assault: {crimeTypes.assault}</p>
+          <p className="text-gray-600">Theft: {crimeTypes.theft}</p>
+          <p className="text-gray-600">Robbery: {crimeTypes.robbery}</p>
+        </motion.div>
+      </div>
 
     </>
   );
