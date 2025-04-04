@@ -18,6 +18,7 @@ import TestMap from './pages/TestMap';
 import UploadFile from './pages/UploadFile';
 import Login from './pages/auth/Login';
 import Criminals from './pages/criminals';
+import BeatsList from './pages/BeatsList';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/map" element={<FullMap />} />
           <Route path="/beats-system" element={<BeatsSystem />} />
+          <Route path="/beats-list" element={<BeatsList />} />
           <Route path="/criminals-locations" element={<Criminals />} />
           <Route path="/crimes" element={<CrimeRecordsList />} />
           <Route path="/crimes/add-options" element={<AddOptions />} />

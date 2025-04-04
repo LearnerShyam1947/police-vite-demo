@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import {
   FileSpreadsheet,
   Home,
+  List,
   LogOut,
   Map,
   MapPinned,
@@ -127,6 +128,16 @@ function DashboardLayout() {
             <Upload size={20} />
             {isSidebarOpen && <span>Beats Upload</span>}
           </Link>
+          
+          <Link
+            to="/beats-List"
+            className={`flex items-center space-x-2 p-4 rounded-lg transition-colors ${
+              location.pathname === '/beats-list' ? 'bg-blue-800' : 'hover:bg-blue-800'
+            }`}
+          >
+            <List size={20} />
+            {isSidebarOpen && <span>Beats List</span>}
+          </Link>
 
           
           <div>
@@ -223,6 +234,7 @@ function DashboardLayout() {
                 {location.pathname === '/criminals-locations' && 'Criminals Locations'}
                 {location.pathname === '/beats-system' && 'Beats System'}
                 {location.pathname === '/beats-upload' && 'Beats upload'}
+                {location.pathname === '/beats-list' && 'Beats List'}
                 {location.pathname === '/crimes' && 'Crime Records'}
                 {location.pathname === '/crimes/add' && 'Add Crime Record'}
                 {location.pathname === '/crimes/upload' && 'Upload File'}
