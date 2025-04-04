@@ -4,8 +4,10 @@ import {
   Home,
   LogOut,
   Map,
+  MapPinned,
   Menu,
   Shield,
+  Upload,
   X
 } from 'lucide-react';
 import { useState } from 'react';
@@ -94,6 +96,36 @@ function DashboardLayout() {
           >
             <Map size={20} />
             {isSidebarOpen && <span>Map</span>}
+          </Link>
+
+          <Link
+            to="/criminals-locations"
+            className={`flex items-center space-x-2 p-4 rounded-lg transition-colors ${
+              location.pathname === '/criminals-locations' ? 'bg-blue-800' : 'hover:bg-blue-800'
+            }`}
+          >
+            <MapPinned size={20} />
+            {isSidebarOpen && <span>Criminals Locations</span>}
+          </Link>
+          
+          <Link
+            to="/beats-system"
+            className={`flex items-center space-x-2 p-4 rounded-lg transition-colors ${
+              location.pathname === '/beats-system' ? 'bg-blue-800' : 'hover:bg-blue-800'
+            }`}
+          >
+            <MapPinned size={20} />
+            {isSidebarOpen && <span>Beats System</span>}
+          </Link>
+          
+          <Link
+            to="/beats-upload"
+            className={`flex items-center space-x-2 p-4 rounded-lg transition-colors ${
+              location.pathname === '/beats-upload' ? 'bg-blue-800' : 'hover:bg-blue-800'
+            }`}
+          >
+            <Upload size={20} />
+            {isSidebarOpen && <span>Beats Upload</span>}
           </Link>
 
           
@@ -188,6 +220,9 @@ function DashboardLayout() {
               <h1 className="text-2xl font-bold text-gray-800">
                 {location.pathname === '/dashboard' && 'Dashboard Overview'}
                 {location.pathname === '/map' && 'Entire Map'}
+                {location.pathname === '/criminals-locations' && 'Criminals Locations'}
+                {location.pathname === '/beats-system' && 'Beats System'}
+                {location.pathname === '/beats-upload' && 'Beats upload'}
                 {location.pathname === '/crimes' && 'Crime Records'}
                 {location.pathname === '/crimes/add' && 'Add Crime Record'}
                 {location.pathname === '/crimes/upload' && 'Upload File'}
