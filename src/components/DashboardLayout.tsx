@@ -12,7 +12,8 @@ import {
   X
 } from 'lucide-react';
 import { useState } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 // Add this type definition
 type StationDetails = {
@@ -29,6 +30,16 @@ function DashboardLayout() {
   const [isCrimeSubmenuOpen, setIsCrimeSubmenuOpen] = useState(false);
   const location = useLocation();
   const [selectedStation, setSelectedStation] = useState<StationDetails>(null);
+
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    if(confirm("Are you sure??")) {
+      logout();
+      navigate("/login");
+    }
+  }
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -242,7 +253,7 @@ function DashboardLayout() {
                 {location.pathname.match(/^\/crimes\/\d+$/) && 'Crime Record Details'}
               </h1>
             </div>
-            <Link to="/login" className="text-blue-600 hover:text-blue-800">Logout</Link>
+            <span style={{cursor: "pointer"}} onClick={handleLogout} className="text-blue-600 hover:text-blue-800">Logout</span>
           </div>
         </header>
 

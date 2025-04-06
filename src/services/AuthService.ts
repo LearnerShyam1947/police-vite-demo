@@ -4,8 +4,9 @@ export const login = async (email: string|undefined, password: string|undefined)
         return {
             message: "user logged in successfully",
             user: {
-                name: "admin",
-                role: "ROLE",
+                name: "Admin",
+                role: "ADMIN",
+                ps: "1 Town PS",
                 email,
                 password
             }

@@ -19,6 +19,7 @@ import UploadFile from './pages/UploadFile';
 import Login from './pages/auth/Login';
 import Criminals from './pages/criminals';
 import BeatsList from './pages/BeatsList';
+import NoAccess from './components/NoAccess';
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
         <Route element={<DashboardLayout />}>
           <Route path="/loc" element={<TestMap />} />
           <Route path="/beats-upload" element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
               <BeatsUpload />
             </ProtectedRoute>
           } />
@@ -57,6 +58,7 @@ function App() {
           <Route path="/crimes/upload" element={<UploadFile />} />
           <Route path="/crimes/edit/:id" element={<EditCrimeRecord />} />
           <Route path="/crimes/:id" element={<CrimeRecordDetail />} />
+          <Route path="/no-access" element={<NoAccess />} />
         </Route>
       </Routes>
     </AuthProvider>
