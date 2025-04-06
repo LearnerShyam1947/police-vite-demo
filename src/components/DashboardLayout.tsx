@@ -72,6 +72,9 @@ function DashboardLayout() {
           width: isSidebarOpen ? '300px' : '0px',
           x: isSidebarOpen ? 0 : -200
         }}
+        style={{
+          zIndex: "100000000"
+        }}
         className={`fixed lg:relative bg-blue-900 text-white h-full z-30 transition-all duration-300 flex flex-col ${
           isSidebarOpen ? 'w-64' : 'w-20'
         } ${!isSidebarOpen && 'lg:w-20'}`}
@@ -141,7 +144,7 @@ function DashboardLayout() {
           </Link>
           
           <Link
-            to="/beats-List"
+            to="/beats-list"
             className={`flex items-center space-x-2 p-4 rounded-lg transition-colors ${
               location.pathname === '/beats-list' ? 'bg-blue-800' : 'hover:bg-blue-800'
             }`}

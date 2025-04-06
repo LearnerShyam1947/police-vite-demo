@@ -48,6 +48,12 @@ function App() {
             </ProtectedRoute>
           } />
 
+          <Route path="/crimes/upload" element={
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
+              <UploadFile />
+            </ProtectedRoute>
+          } />
+
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/map" element={<FullMap />} />
           <Route path="/beats-list" element={<BeatsList />} />
@@ -55,7 +61,6 @@ function App() {
           <Route path="/crimes" element={<CrimeRecordsList />} />
           <Route path="/crimes/add-options" element={<AddOptions />} />
           <Route path="/crimes/add" element={<AddCrimeRecord />} />
-          <Route path="/crimes/upload" element={<UploadFile />} />
           <Route path="/crimes/edit/:id" element={<EditCrimeRecord />} />
           <Route path="/crimes/:id" element={<CrimeRecordDetail />} />
           <Route path="/no-access" element={<NoAccess />} />
