@@ -1,12 +1,11 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { Shield, Phone, Users, Scale, Bell, Mail, MapPin, Facebook, Twitter, Instagram } from 'lucide-react';
+import { Bell, Facebook, Instagram, Mail, MapPin, Phone, Scale, Shield, Twitter, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { useAuth } from '../contexts/AuthContext';
 
 function LandingPage() {

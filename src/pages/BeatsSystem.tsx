@@ -28,7 +28,7 @@ const BeatsSystem = () => {
   const requiredGEOData = user?.role == "ADMIN" ? psRegions :  getFeatureByRegionId(psRegions, user?.ps);
 
   const loadData = async () => {
-      const data = await fetchData(user && user.ps);
+      const data:any = await fetchData(user);
       if (data && data.data) {
         setSampleData(data.data);
       } else {

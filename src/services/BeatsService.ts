@@ -1,20 +1,36 @@
-export const fetchData = async (ps: any) => {
-    try {
-        ps = encodeURIComponent(ps);
-        const response = await fetch(`https://police-backend-prototype.onrender.com/api/v1/beats?currentPoliceStation=${ps}/`);
-        console.log(`https://police-backend-prototype.onrender.com/api/v1/beats?currentPoliceStation=${ps}/`);
-        // console.log(await response.text());
-        
-        const data = await response.json();
-        console.log(data);
-        alert(`Fetched total records : ${data.data.length}`);
+import { User } from "../types/User";
 
-        return data;
-    } catch (error) {
-        console.error(error);
-        alert("error while fetching data");
-        
-        return error;
+export const fetchData = async (user: User|null) => {
+    let url = "";
+    if(user) {
+        try {
+            if (user.role === "ADMIN") {
+                url = `https://police-backend-prototype.onrender.com/api/v1/beats`;           
+            }
+            else {
+                const ps = encodeURIComponent(user.ps);
+                url = `https://police-backend-prototype.onrender.com/api/v1/beats?currentPoliceStation=${ps}`;
+            }
+            
+            const response = await fetch(url);
+            console.log(url);
+            
+            const data = await response.json();
+            console.log(data);
+            alert(`Fetched total records : ${data.data.length}`);
+            
+            return data;
+        } catch (error) {
+            console.error(error);
+            alert("error while fetching data");
+            
+            return error;
+        }
+    }
+    else {
+        return {
+            error: "Error user"
+        }
     }
 }
 

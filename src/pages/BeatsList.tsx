@@ -83,7 +83,9 @@ function BeatsList() {
   const [isLoading, setIsLoading] = useState(true);
 
   const loadData = async () => {
-        const data = await fetchData(user && user.ps);
+        const data:any = await fetchData(user);
+        console.log(data);
+        
         if (data && data.data) {
           setSampleData(data.data);
           setIsLoading(false);
