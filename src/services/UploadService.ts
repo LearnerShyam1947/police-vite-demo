@@ -9,7 +9,7 @@ export const uploadFile = async (file: any, setUploading: any) => {
     formData.append('file', file);
 
     try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/criminals/upload-records`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/criminals/upload-records/`, {
             method: 'POST',
             body: formData,
         });
@@ -19,7 +19,7 @@ export const uploadFile = async (file: any, setUploading: any) => {
         alert(`data uploaded successfully. ${data.message}`);
     } catch (error) {
         console.error(error);
-        alert("data uploaded successfully");
+        alert("Error while uploading");
         
     } finally {
         setUploading(false);

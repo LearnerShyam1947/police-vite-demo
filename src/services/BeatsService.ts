@@ -1,7 +1,10 @@
 export const fetchData = async (ps: any) => {
     try {
-
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/beats?currentPoliceStation=${ps}`);
+        ps = encodeURIComponent(ps);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/beats?currentPoliceStation=${ps}/`);
+        console.log(`${import.meta.env.VITE_API_URL}/api/v1/beats?currentPoliceStation=${ps}/`);
+        // console.log(await response.text());
+        
         const data = await response.json();
         console.log(data);
         alert(`Fetched total records : ${data.data.length}`);
@@ -9,7 +12,7 @@ export const fetchData = async (ps: any) => {
         return data;
     } catch (error) {
         console.error(error);
-        alert("data uploaded successfully");
+        alert("error while fetching data");
         
         return error;
     }
@@ -26,7 +29,7 @@ export const uploadRecords = async (file: any, setUploading: any) => {
     formData.append('file', file);
 
     try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/beats/upload-records`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/beats/upload-records/`, {
             method: 'POST',
             body: formData,
         });
