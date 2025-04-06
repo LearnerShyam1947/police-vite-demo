@@ -12,11 +12,11 @@ export const login = async (email: string|undefined, password: string|undefined)
             }
         }
     }
-    if (email === "r1@gmail.com" && password === "r1") {
+    if (email === "onetownps@gmail.com" && password === "onetownps") {
         return {
             message: "user logged in successfully",
             user: {
-                name: "admin",
+                name: "1 Town PS",
                 role: "ROLE",
                 ps: "1 Town PS",
                 email,
@@ -24,11 +24,11 @@ export const login = async (email: string|undefined, password: string|undefined)
             }
         }
     }
-    if (email === "r2@gmail.com" && password === "r2") {
+    if (email === "twotowmps@gmail.com" && password === "twotowmps") {
         return {
             message: "user logged in successfully",
             user: {
-                name: "admin",
+                name: "2 Town PS",
                 role: "ROLE",
                 ps: "2 Town PS",
                 email,
@@ -36,11 +36,11 @@ export const login = async (email: string|undefined, password: string|undefined)
             }
         }
     }
-    if (email === "r3@gmail.com" && password === "r3") {
+    if (email === "threetownps@gmail.com" && password === "threetownps") {
         return {
             message: "user logged in successfully",
             user: {
-                name: "admin",
+                name: "3 Town PS",
                 role: "ROLE",
                 ps: "3 Town PS",
                 email,
@@ -48,11 +48,11 @@ export const login = async (email: string|undefined, password: string|undefined)
             }
         }
     }
-    if (email === "r4@gmail.com" && password === "r4") {
+    if (email === "fourtownps@gmail.com" && password === "fourtownps") {
         return {
             message: "user logged in successfully",
             user: {
-                name: "admin",
+                name: "4 Town PS",
                 role: "ROLE",
                 ps: "4 Town PS",
                 email,
@@ -60,11 +60,11 @@ export const login = async (email: string|undefined, password: string|undefined)
             }
         }
     }
-    if (email === "r5@gmail.com" && password === "r5") {
+    if (email === "ruralps@gmail.com" && password === "ruralps") {
         return {
             message: "user logged in successfully",
             user: {
-                name: "admin",
+                name: "Rural PS",
                 role: "ROLE",
                 ps: "Rural PS",
                 email,
@@ -79,7 +79,7 @@ export const login = async (email: string|undefined, password: string|undefined)
 
     // try {
     //     const response = await fetch(
-    //         `${import.meta.env.VITE_API_URL}api/v1/auth/login`,
+    //         `https://police-backend-prototype.onrender.comapi/v1/auth/login`,
     //         {
     //             method: "POST",
     //             headers: {
@@ -101,7 +101,7 @@ export const register = async (data: any) => {
     data = {...data, username: `${data.firstName} ${data.lastName}`}
     try {
         const response = await fetch(
-            `${import.meta.env.VITE_API_URL}api/v1/auth/register`,
+            `https://police-backend-prototype.onrender.comapi/v1/auth/register`,
             {
                 method: "POST",
                 headers: {

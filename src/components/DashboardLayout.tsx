@@ -31,7 +31,7 @@ function DashboardLayout() {
   const location = useLocation();
   const [selectedStation, setSelectedStation] = useState<StationDetails>(null);
 
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {

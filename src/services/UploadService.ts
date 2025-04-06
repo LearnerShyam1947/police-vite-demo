@@ -9,7 +9,7 @@ export const uploadFile = async (file: any, setUploading: any) => {
     formData.append('file', file);
 
     try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/criminals/upload-records/`, {
+        const response = await fetch(`https://police-backend-prototype.onrender.com/api/v1/criminals/upload-records/`, {
             method: 'POST',
             body: formData,
         });

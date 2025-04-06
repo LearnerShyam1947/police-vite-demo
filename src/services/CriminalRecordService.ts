@@ -1,7 +1,7 @@
 export const fetchData = async () => {
     try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/criminals/`);
-        console.log(`${import.meta.env.VITE_API_URL}/api/v1/criminals/`);
+        const response = await fetch(`https://police-backend-prototype.onrender.com/api/v1/criminals/`);
+        console.log(`https://police-backend-prototype.onrender.com/api/v1/criminals/`);
         const data = await response.json();
         console.log(data);
         alert(`Fetched total records : ${data.noOfRecords}`);
@@ -17,10 +17,10 @@ export const fetchData = async () => {
 
 export const deleteRecord = async (id:any) => {
     try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/criminals/${id}/`, {
+        const response = await fetch(`https://police-backend-prototype.onrender.com/api/v1/criminals/${id}/`, {
             method: "DELETE"
         });
-        console.log(`${import.meta.env.VITE_API_URL}/api/v1/criminals/${id}/`);
+        console.log(`https://police-backend-prototype.onrender.com/api/v1/criminals/${id}/`);
         
         const data = await response.json();
         console.log(data);

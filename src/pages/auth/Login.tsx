@@ -35,23 +35,29 @@ const Login = () => {
     navigate(from, { replace: true });
   }
 
+  const { user } = useAuth();
+
   return (
     <div className="min-h-screen bg-white">
       {/* Top Bar */}
       <div className="bg-blue-900 text-white py-2">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="flex items-center space-x-4">
-            <Phone size={16} />
-            <span>Emergency: 100</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Link to="/dashboard" className="hover:text-blue-200">Dashboard</Link>
-            <a href="#" className="hover:text-blue-200"><Facebook size={16} /></a>
-            <a href="#" className="hover:text-blue-200"><Twitter size={16} /></a>
-            <a href="#" className="hover:text-blue-200"><Instagram size={16} /></a>
-          </div>
-        </div>
-      </div>
+              <div className="container mx-auto px-4 flex justify-between items-center">
+                <div className="flex items-center space-x-4">
+                  <Phone size={16} />
+                  <span>Emergency: 100</span>
+                </div>
+                <div className="flex items-center space-x-4">
+                  {
+                    user
+                     ? <Link to="/dashboard" className="hover:text-blue-200">Dashboard</Link>
+                     : <Link to="/login" className="hover:text-blue-200">Login</Link>
+                  }
+                  <a href="#" className="hover:text-blue-200"><Facebook size={16} /></a>
+                  <a href="#" className="hover:text-blue-200"><Twitter size={16} /></a>
+                  <a href="#" className="hover:text-blue-200"><Instagram size={16} /></a>
+                </div>
+              </div>
+            </div>
 
       {/* Navbar */}
       <nav className="bg-white shadow-lg sticky top-0 z-50">
@@ -63,7 +69,7 @@ const Login = () => {
               className="flex items-center space-x-2"
             >
               <Shield className="text-blue-900" size={32} />
-              <span className="text-2xl font-bold text-blue-900">AP Police</span>
+              <Link to={"/"} className="text-2xl font-bold text-blue-900">AP Police</Link>
             </motion.div>
             <div className="hidden md:flex space-x-8">
               <a href="#home" className="text-gray-700 hover:text-blue-900">Home</a>

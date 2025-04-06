@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { useAuth } from '../contexts/AuthContext';
 
 function LandingPage() {
   const fadeInUp = {
@@ -23,6 +24,8 @@ function LandingPage() {
     transition: { staggerChildren: 0.2 }
   };
 
+  const { user } = useAuth();
+
   return (
     <div className="min-h-screen bg-white">
       {/* Top Bar */}
@@ -33,7 +36,11 @@ function LandingPage() {
             <span>Emergency: 100</span>
           </div>
           <div className="flex items-center space-x-4">
-            <Link to="/dashboard" className="hover:text-blue-200">Dashboard</Link>
+            {
+              user
+               ? <Link to="/dashboard" className="hover:text-blue-200">Dashboard</Link>
+               : <Link to="/login" className="hover:text-blue-200">Login</Link>
+            }
             <a href="#" className="hover:text-blue-200"><Facebook size={16} /></a>
             <a href="#" className="hover:text-blue-200"><Twitter size={16} /></a>
             <a href="#" className="hover:text-blue-200"><Instagram size={16} /></a>
@@ -51,7 +58,7 @@ function LandingPage() {
               className="flex items-center space-x-2"
             >
               <Shield className="text-blue-900" size={32} />
-              <span className="text-2xl font-bold text-blue-900">AP Police</span>
+              <Link to="/" className="text-2xl font-bold text-blue-900">AP Police</Link>
             </motion.div>
             <div className="hidden md:flex space-x-8">
               <a href="#home" className="text-gray-700 hover:text-blue-900">Home</a>
