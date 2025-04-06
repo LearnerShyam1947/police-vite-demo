@@ -114,7 +114,8 @@ export const psRegions : FeatureCollection = {
             },
             "id": "88ca05dd-c63e-4d4d-bbd0-466bf90c3bc6",
             "properties": {
-                "regionId" : 1
+                "regionId" : 1,
+                "ps" : "1 Town PS"
             }
         },
        
@@ -197,7 +198,8 @@ export const psRegions : FeatureCollection = {
             },
             "id": "52d70296-e220-4cfc-b942-beaa4e591558",
             "properties": {
-                "regionId" : 2
+                "regionId" : 2,
+                "ps" : "2 Town PS"
             }
         },
         
@@ -316,7 +318,8 @@ export const psRegions : FeatureCollection = {
             },
             "id": "388b5478-1f46-4b95-81a8-ab9697368e0c",
             "properties": {
-                "regionId" : 3
+                "regionId" : 3,
+                "ps" : "3 Town PS"
             }
         },
         
@@ -391,7 +394,8 @@ export const psRegions : FeatureCollection = {
             },
             "id": "46e137e0-235a-4d65-a107-b835ee3d240c",
             "properties": {
-                "regionId" : 4
+                "regionId" : 4,
+                "ps" : "4 Town PS"
             }
         },
         
@@ -466,24 +470,10 @@ export const psRegions : FeatureCollection = {
             },
             "id": "8c80e960-0ee8-4d6e-a58f-5d145aa16a11",
             "properties": {
-                "regionId" : 5
+                "regionId" : 5,
+                "ps" : "Rural PS"
             }
         }
     ],
-    // "metadata": {
-    //     "tileStats": {
-    //         "layers": [
-    //             {
-    //                 "layer": "anantapur-ps-regions",
-    //                 "sourceType": "geojson",
-    //                 "attributes": [],
-    //                 "attributeCount": 0,
-    //                 "geometry": [
-    //                     "Polygon"
-    //                 ]
-    //             }
-    //         ],
-    //         "layerCount": 1
-    //     }
-    // }
+    
 }

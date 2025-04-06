@@ -41,9 +41,14 @@ function App() {
             </ProtectedRoute>
           } />
 
+          <Route path="/beats-system" element={
+            <ProtectedRoute>
+              <BeatsSystem />
+            </ProtectedRoute>
+          } />
+
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/map" element={<FullMap />} />
-          <Route path="/beats-system" element={<BeatsSystem />} />
           <Route path="/beats-list" element={<BeatsList />} />
           <Route path="/criminals-locations" element={<Criminals />} />
           <Route path="/crimes" element={<CrimeRecordsList />} />

@@ -10,10 +10,10 @@ from old doc.
 about section to new page.
 
 2nd page ->
-multiple qute -> list bulider -> form 
 get quote -> form
+multiple qute -> list bulider -> form 
 
-list bulider correction ( search function - City*, Area, Pincode*).
+list bulider ( search function - City*, Area, Pincode*).
 
  - image (to left)
  - name of bulider

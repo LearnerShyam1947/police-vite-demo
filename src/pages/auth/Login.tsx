@@ -31,6 +31,7 @@ const Login = () => {
     }
 
     setUser(resp.user);
+    localStorage.setItem("user", JSON.stringify(resp.user));
     navigate(from, { replace: true });
   }
 

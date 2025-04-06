@@ -11,6 +11,66 @@ export const login = async (email: string|undefined, password: string|undefined)
             }
         }
     }
+    if (email === "r1@gmail.com" && password === "r1") {
+        return {
+            message: "user logged in successfully",
+            user: {
+                name: "admin",
+                role: "ROLE",
+                ps: "1 Town PS",
+                email,
+                password
+            }
+        }
+    }
+    if (email === "r2@gmail.com" && password === "r2") {
+        return {
+            message: "user logged in successfully",
+            user: {
+                name: "admin",
+                role: "ROLE",
+                ps: "2 Town PS",
+                email,
+                password
+            }
+        }
+    }
+    if (email === "r3@gmail.com" && password === "r3") {
+        return {
+            message: "user logged in successfully",
+            user: {
+                name: "admin",
+                role: "ROLE",
+                ps: "3 Town PS",
+                email,
+                password
+            }
+        }
+    }
+    if (email === "r4@gmail.com" && password === "r4") {
+        return {
+            message: "user logged in successfully",
+            user: {
+                name: "admin",
+                role: "ROLE",
+                ps: "4 Town PS",
+                email,
+                password
+            }
+        }
+    }
+    if (email === "r5@gmail.com" && password === "r5") {
+        return {
+            message: "user logged in successfully",
+            user: {
+                name: "admin",
+                role: "ROLE",
+                ps: "Rural PS",
+                email,
+                password
+            }
+        }
+    }
 
     return {
         error: "Invalid user details"

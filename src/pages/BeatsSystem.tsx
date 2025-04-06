@@ -1,14 +1,46 @@
 import { FeatureCollection } from 'geojson';
 import L from 'leaflet';
-import React from 'react';
+import React, { useState } from 'react';
 import { GeoJSON, MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 import { useSearchParams } from 'react-router-dom';
 import police from "./../assets/police.png";
 
 import { psRegions } from "./../data/ananthapuramu-only";
-import { sampleData } from "./../data/beats-sample";
+// import { sampleData } from "./../data/beats-sample";
+import { useAuth } from '../contexts/AuthContext';
+import { fetchData } from '../services/BeatsService';
 
 const BeatsSystem = () => {
+  const { user } = useAuth();
+  const [sampleData, setSampleData] = useState<any[]>([]);
+
+  function getFeatureByRegionId(data:any, ps:any) {
+    const feature = data.features.find((f:any) => f.properties.ps === ps);
+    const data1 : FeatureCollection = {
+      "type": "FeatureCollection",
+      "features": [
+          feature
+      ]
+  };
+    return data1;
+}
+
+  const requiredGEOData = getFeatureByRegionId(psRegions, user?.ps);
+
+  const loadData = async () => {
+      const data = await fetchData(user && user.ps);
+      if (data && data.data) {
+        setSampleData(data.data);
+      } else {
+        console.error("No records found");
+      }
+    };
+    
+    
+    React.useEffect(() => {
+      loadData();
+    }, []);
+
 
   const getStyle = (feature: any) => {
     switch (feature.properties.regionId) {
@@ -220,7 +252,7 @@ const BeatsSystem = () => {
   });
 
   const calculateBounds = () => {
-    const bounds = new L.LatLngBounds();
+    const bounds = new L.LatLngBounds([]);
 
     filteredData.forEach(station => {
       bounds.extend([station.lat, station.long]);
@@ -269,21 +301,21 @@ const BeatsSystem = () => {
       />
 
       <GeoJSON data={anantapurRegion} />
-      <GeoJSON data={psRegions} style={getStyle} />
+      <GeoJSON data={requiredGEOData} style={getStyle} />
       <SetMapBounds />
 
       {
         sampleData.map((value) => (
           <Marker
-            position={[value.lat, value.long]}
+            position={[value.latitude, value.longitude]}
           >
             <Popup>
-              <strong>{value.name}</strong> <br />
-              <span> <b>Phone Number :</b> {value.phoneNumber}</span> <br />
-              <span> <b>aadharNumber :</b> {value.aadharNumber}</span> <br />
+              <strong>{value.accusedName}</strong> <br />
+              <span> <b>Phone Number :</b> {value.mobileNumber}</span> <br />
+              {/* <span> <b>aadharNumber :</b> {value.aadharNumber}</span> <br /> */}
               <span> <b>Address :</b> {value.address}</span> <br />
-              <span> <b>No. of crimes :</b> {value.noOfCrimes}</span>
-              <img style={{ height: "150px" }} src={value.imageUrl} alt="" />
+              {/* <span> <b>No. of crimes :</b> {value.noOfCrimes}</span> */}
+              {/* <img style={{ height: "150px" }} src={value.imageUrl} alt="" /> */}
             </Popup>
           </Marker>
         ))

@@ -242,7 +242,7 @@ function DashboardLayout() {
                 {location.pathname.match(/^\/crimes\/\d+$/) && 'Crime Record Details'}
               </h1>
             </div>
-            <Link to="/" className="text-blue-600 hover:text-blue-800">Back to Home</Link>
+            <Link to="/login" className="text-blue-600 hover:text-blue-800">Logout</Link>
           </div>
         </header>
 

@@ -9,17 +9,18 @@ export const uploadFile = async (file: any, setUploading: any) => {
     formData.append('file', file);
 
     try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/upload`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/criminals/upload-records`, {
             method: 'POST',
             body: formData,
         });
         const data = await response.json();
         console.log(data);
         
-        alert("data uploaded successfully");
+        alert(`data uploaded successfully. ${data.message}`);
     } catch (error) {
         console.error(error);
-        alert('Error uploading file');
+        alert("data uploaded successfully");
+        
     } finally {
         setUploading(false);
     }

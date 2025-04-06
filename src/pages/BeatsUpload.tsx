@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { uploadFile } from '../services/UploadService';
+import { uploadRecords } from '../services/BeatsService';
 
 const BeatsUpload = () => {
   const [file, setFile] = useState<any>(null);
@@ -46,7 +46,7 @@ const BeatsUpload = () => {
         )}
 
         <button
-          onClick={() => uploadFile(file, setUploading)}
+          onClick={() => uploadRecords(file, setUploading)}
           disabled={!file || uploading}
           className={`w-full px-4 py-2 text-white rounded-lg ${
             !file || uploading
