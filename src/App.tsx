@@ -20,13 +20,21 @@ import Login from './pages/auth/Login';
 import Criminals from './pages/criminals';
 import BeatsList from './pages/BeatsList';
 import NoAccess from './components/NoAccess';
+import Test from './components/Test';
+import BeatsUnMapped from './pages/BeatsUnMapped';
 
 function App() {
+  const sampleLocations = [
+    // { id: '1', latitude: 16.49405, longitude: 80.49982, status: 'not visited' }
+    { id: '1', latitude: 16.03666, longitude: 80.10793, status: 'not visited' }
+  ];
+
   return (
     <AuthProvider>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/test" element={<GeolocationComponent />} />
+        <Route path="/tracker-test" element={<Test locations={sampleLocations} />} />
         <Route path="/tracker" element={<MyLocationTracker />} />
 
         {/* Dashboard and Crime Records */}
@@ -57,6 +65,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/map" element={<FullMap />} />
           <Route path="/beats-list" element={<BeatsList />} />
+          <Route path="/beats-unmapped-list" element={<BeatsUnMapped />} />
           <Route path="/criminals-locations" element={<Criminals />} />
           <Route path="/crimes" element={<CrimeRecordsList />} />
           <Route path="/crimes/add-options" element={<AddOptions />} />

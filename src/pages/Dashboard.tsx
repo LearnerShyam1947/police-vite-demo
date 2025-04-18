@@ -8,7 +8,7 @@ import {
   TrendingUp,
   UserCheck
 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Area,
@@ -22,6 +22,8 @@ import {
   Tooltip,
   XAxis, YAxis
 } from 'recharts';
+import { fetchData } from '../services/BeatsService';
+import { useAuth } from '../contexts/AuthContext';
 
 // Mock data for charts
 const crimeData = [
@@ -68,6 +70,23 @@ function Dashboard() {
     setIsCrimeSubmenuOpen(!isCrimeSubmenuOpen);
   };
 
+  const { user } = useAuth();
+
+  const [totalBeats, setTotalBeats] = useState(0);
+  const [completedBeats, setCompletedBeats] = useState(0);
+
+  const getStats = async () => {
+    const data = await fetchData(user);
+    setTotalBeats(data.data.length);
+    
+    const filterData = data.data.filter((d:any) => d.status === "Met")
+    setCompletedBeats(filterData.length);
+  }
+
+  useEffect(() => {
+    getStats();
+  }, [])
+
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Overlay for mobile when sidebar is open */}
@@ -84,13 +103,12 @@ function Dashboard() {
         {/* Dashboard Content */}
         <main className="p-6">
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             {[
-              { icon: TrendingUp, label: 'Total Incidents', value: '2,547', trend: '+12%' },
-              { icon: AlertTriangle, label: 'Active Cases', value: '487', trend: '+5%' },
-              { icon: UserCheck, label: 'Officers on Duty', value: '124', trend: '-2%' },
-              { icon: Clock, label: 'Avg Response Time', value: '8.5 min', trend: '-8%' },
-            ].map(({ icon: Icon, label, value, trend }) => (
+              { icon: TrendingUp, label: 'Total Beats', value: totalBeats,  },
+              { icon: AlertTriangle, label: 'Completed Beats', value: completedBeats, },
+              { icon: UserCheck, label: 'Officers on Duty', value: '1', },
+            ].map(({ icon: Icon, label, value }) => (
               <motion.div
                 key={label}
                 initial={{ opacity: 0, y: 20 }}
@@ -101,10 +119,6 @@ function Dashboard() {
                   <div className="p-2 bg-blue-100 rounded-lg">
                     <Icon className="text-blue-600" size={24} />
                   </div>
-                  <span className="flex items-center text-green-500">
-                    {trend}
-                    <ArrowUpRight size={16} />
-                  </span>
                 </div>
                 <h3 className="text-xl font-semibold mt-4">{value}</h3>
                 <p className="text-gray-600">{label}</p>
@@ -113,7 +127,7 @@ function Dashboard() {
           </div>
 
           {/* Recent Incidents with View All Link */}
-          <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
+          {/* <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold">Recent Incidents</h3>
               <Link to="/crimes" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
@@ -158,7 +172,7 @@ function Dashboard() {
                 </tbody>
               </table>
             </div>
-          </div>
+          </div> */}
 
           {/* Charts Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
@@ -168,7 +182,7 @@ function Dashboard() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white rounded-xl shadow-sm p-6"
             >
-              <h3 className="text-lg font-semibold mb-4">Crime Trends</h3>
+              <h3 className="text-lg font-semibold mb-4">Completed Beats</h3>
               <div className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={crimeData}>
@@ -188,7 +202,7 @@ function Dashboard() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white rounded-xl shadow-sm p-6"
             >
-              <h3 className="text-lg font-semibold mb-4">Response Time Analysis</h3>
+              <h3 className="text-lg font-semibold mb-4">Incomplete Beats</h3>
               <div className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={responseTimeData}>

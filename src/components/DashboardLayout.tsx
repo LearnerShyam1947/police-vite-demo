@@ -152,6 +152,16 @@ function DashboardLayout() {
             <List size={20} />
             {isSidebarOpen && <span>Beats List</span>}
           </Link>
+          
+          <Link
+            to="/beats-unmapped-list"
+            className={`flex items-center space-x-2 p-4 rounded-lg transition-colors ${
+              location.pathname === '/beats-unmapped-list' ? 'bg-blue-800' : 'hover:bg-blue-800'
+            }`}
+          >
+            <List size={20} />
+            {isSidebarOpen && <span>Beats UnMapped List</span>}
+          </Link>
 
           
           <div>
@@ -249,6 +259,7 @@ function DashboardLayout() {
                 {location.pathname === '/beats-system' && 'Beats System'}
                 {location.pathname === '/beats-upload' && 'Beats upload'}
                 {location.pathname === '/beats-list' && 'Beats List'}
+                {location.pathname === '/beats-unmapped-list' && 'Beats Unmapped List'}
                 {location.pathname === '/crimes' && 'Crime Records'}
                 {location.pathname === '/crimes/add' && 'Add Crime Record'}
                 {location.pathname === '/crimes/upload' && 'Upload File'}

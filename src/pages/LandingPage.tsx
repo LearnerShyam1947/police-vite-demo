@@ -80,9 +80,9 @@ function LandingPage() {
           className="h-full"
         >
           <SwiperSlide>
-            <div className="h-full bg-cover bg-center" style={{ backgroundImage: 'url("https://pbs.twimg.com/media/Ew7dLn4VgAA3cVd.jpg")' }}>
+            <div className="h-full bg-cover bg-center" style={{ backgroundImage: 'url("https://teluguprabha.net/wp-content/uploads/2025/01/CompressJPEG.Online_img1280x720-2025-01-23T115745.906.jpg")' }}>
               <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center">
-                <div className="container mx-auto px-4">
+                <div className="container mx-auto px-4">  
                   <motion.h1 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}

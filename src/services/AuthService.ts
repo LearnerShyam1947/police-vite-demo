@@ -79,7 +79,7 @@ export const login = async (email: string|undefined, password: string|undefined)
 
     // try {
     //     const response = await fetch(
-    //         `https://police-backend-prototype.onrender.comapi/v1/auth/login`,
+    //         ``https://police-backend-prototype.onrender.comapi/v1/auth/login`,
     //         {
     //             method: "POST",
     //             headers: {
@@ -101,7 +101,7 @@ export const register = async (data: any) => {
     data = {...data, username: `${data.firstName} ${data.lastName}`}
     try {
         const response = await fetch(
-            `https://police-backend-prototype.onrender.comapi/v1/auth/register`,
+            ``https://police-backend-prototype.onrender.comapi/v1/auth/register`,
             {
                 method: "POST",
                 headers: {
