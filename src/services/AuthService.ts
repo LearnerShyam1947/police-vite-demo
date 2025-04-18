@@ -97,25 +97,4 @@ export const login = async (email: string|undefined, password: string|undefined)
     // }
 }
 
-export const register = async (data: any) => {
-    data = {...data, username: `${data.firstName} ${data.lastName}`}
-    try {
-        const response = await fetch(
-            ``https://police-backend-prototype.onrender.comapi/v1/auth/register`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            }
-        );
-
-        return await response.json();
-        
-    } catch (error) {
-        console.log(`error while make api call : ${error}`);
-        return null;
-    }
-}
 
